@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ScenePlanning/StreamPanel.gd" type="Script" id=1]
+[ext_resource path="res://ScenePlanning/Grabber.gd" type="Script" id=2]
+
+[node name="StreamPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -620.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.25098, 0.654902, 0.760784, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 41.0
+margin_right = 1280.0
+margin_bottom = 55.0
+size_flags_vertical = 6
+text = "Stream Title"
+align = 1
+valign = 1
+
+[node name="Image" type="TextureRect" parent="VBoxContainer"]
+margin_top = 100.0
+margin_right = 1280.0
+margin_bottom = 100.0
+
+[node name="TopGrabber" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_bottom = 10.0
+mouse_default_cursor_shape = 9
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BottomGrabber" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -10.0
+mouse_default_cursor_shape = 9
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MoveGrabber" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_bottom = -20.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="clicked_changed" from="TopGrabber" to="." method="_on_TopGrabber_clicked_changed"]
+[connection signal="clicked_changed" from="BottomGrabber" to="." method="_on_BottomGrabber_clicked_changed"]
+[connection signal="clicked_changed" from="MoveGrabber" to="." method="_on_MoveGrabber_clicked_changed"]
