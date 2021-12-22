@@ -134,6 +134,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://BabaGodotLib/Scenes/HUD/Collectable_HUD_Label.gd"
 }, {
+"base": "Control",
+"class": "Column",
+"language": "GDScript",
+"path": "res://ScenePlanning/Column/Column.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ColumnManager",
+"language": "GDScript",
+"path": "res://ScenePlanning/ColumnsManager.gd"
+}, {
 "base": "IsoMap",
 "class": "CombatIsoMap",
 "language": "GDScript",
@@ -560,6 +570,8 @@ _global_script_class_icons={
 "Collectable_CollectState": "",
 "Collectable_FollowState": "",
 "Collectable_HUD_Label": "",
+"Column": "",
+"ColumnManager": "",
 "CombatIsoMap": "",
 "DebrisFactory": "",
 "DescriptionWindow": "",
@@ -648,10 +660,22 @@ config/name="StreamPlanningMaker"
 run/main_scene="res://ScenePlanning/Planning.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+EVENTS="*res://Autoloads/Events.gd"
+
 [display]
 
 window/size/width=1280
 window/size/height=720
+
+[input]
+
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [physics]
 
