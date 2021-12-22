@@ -663,6 +663,7 @@ config/icon="res://icon.png"
 [autoload]
 
 EVENTS="*res://Autoloads/Events.gd"
+GLOBAL="*res://Autoloads/Global.gd"
 
 [display]
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://BabaGodotLib/Fonts/MediumPixel.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ScenePlanning/StreamPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ScenePlanning/Column/Column.gd" type="Script" id=3]
 [ext_resource path="res://ScenePlanning/MainContainer.gd" type="Script" id=5]
 
@@ -143,10 +142,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StreamPanel" parent="MainContainer/ColumnsManager/Monday" instance=ExtResource( 2 )]
-margin_bottom = -520.0
-size_flags_horizontal = 6
-
 [node name="Thuesday" type="Control" parent="MainContainer/ColumnsManager"]
 margin_left = 169.0
 margin_right = 334.0
@@ -209,6 +204,7 @@ __meta__ = {
 
 [node name="HourlyCointainer" type="VBoxContainer" parent="MainContainer"]
 anchor_bottom = 1.0
+margin_top = 40.0
 margin_right = 30.0
 __meta__ = {
 "_edit_lock_": true,
@@ -216,52 +212,49 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 40.0
 margin_right = 40.0
-margin_bottom = 56.0
-size_flags_vertical = 6
+margin_bottom = 16.0
+size_flags_vertical = 2
 text = "8:00"
 
 [node name="Label3" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 140.0
+margin_top = 94.0
 margin_right = 40.0
-margin_bottom = 156.0
-size_flags_vertical = 6
+margin_bottom = 110.0
+size_flags_vertical = 2
 text = "10:00"
 
 [node name="Label4" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 241.0
+margin_top = 189.0
 margin_right = 40.0
-margin_bottom = 257.0
-size_flags_vertical = 6
+margin_bottom = 205.0
+size_flags_vertical = 2
 text = "12:00"
 
 [node name="Label5" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 341.0
+margin_top = 284.0
 margin_right = 40.0
-margin_bottom = 357.0
-size_flags_vertical = 6
+margin_bottom = 300.0
+size_flags_vertical = 2
 text = "14:00"
 
 [node name="Label6" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 442.0
+margin_top = 379.0
 margin_right = 40.0
-margin_bottom = 458.0
-size_flags_vertical = 6
+margin_bottom = 395.0
+size_flags_vertical = 2
 text = "16:00"
 
 [node name="Label7" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 542.0
+margin_top = 474.0
 margin_right = 40.0
-margin_bottom = 558.0
-size_flags_vertical = 6
+margin_bottom = 490.0
+size_flags_vertical = 2
 text = "18:00"
 
 [node name="Label8" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 643.0
+margin_top = 569.0
 margin_right = 40.0
-margin_bottom = 659.0
-size_flags_vertical = 6
+margin_bottom = 585.0
+size_flags_vertical = 2
 text = "20:00"
-
-[connection signal="column_shift_query" from="MainContainer/ColumnsManager/Monday/StreamPanel" to="MainContainer" method="_on_StreamPanel_column_shift_query"]

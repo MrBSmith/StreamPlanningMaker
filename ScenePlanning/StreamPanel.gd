@@ -51,7 +51,8 @@ func _process(_delta: float) -> void:
 	container_size = get_parent().get_size()
 	container_pos = get_parent().get_global_position()
 	var initial_bottom = initial_panel_global_position.y + initial_panel_size.y
-
+	var time_slot_size = get_parent().rect_size.y / GLOBAL.nb_time_slot
+	
 	mouse_pos = get_global_mouse_position()
 	
 	if ghost_mode:
@@ -59,20 +60,23 @@ func _process(_delta: float) -> void:
 	else:
 		set_ghost_mode(_is_dragged_outside_column())
 		
-		# Handles resizing and moving the panel 
+		# Handles resizing using the top grabber
 		if top_grabber_dragged:
-			rect_global_position.y = clamp(stepify(mouse_pos.y, 50.0), container_pos.y, initial_bottom - 50.0)
-			rect_size.y = clamp(initial_bottom - rect_global_position.y, 50.0, container_size.y)
+			rect_global_position.y = clamp(stepify(mouse_pos.y, time_slot_size), 
+									container_pos.y, initial_bottom - time_slot_size)
+			rect_size.y = clamp(initial_bottom - rect_global_position.y, time_slot_size, container_size.y)
 		
+		# Handles resizing using the bottom grabber
 		elif bottom_grabber_dragged:
 			var v_mouse_dist = clamp(mouse_pos.y - global_pos.y, 0.0, INF)
-			rect_size.y = clamp(stepify(v_mouse_dist, 50.0), 50.0, container_size.y)
+			rect_size.y = clamp(stepify(v_mouse_dist, time_slot_size), time_slot_size, container_size.y)
 		
+		# Handles moving the panel verticaly
 		elif move_grabber_dragged:
 			var grab_offset = grab_position - initial_panel_global_position
 			var container_bottom_right = container_pos + container_size
 			
-			rect_global_position.y = clamp(stepify(mouse_pos.y - grab_offset.y, 50.0), 
+			rect_global_position.y = clamp(stepify(mouse_pos.y - grab_offset.y, time_slot_size) + container_pos.y, 
 							container_pos.y, container_bottom_right.y - rect_size.y)
 
 
@@ -147,4 +151,4 @@ func _on_ghost_mode_changed(ghost: bool) -> void:
 
 func _on_EVENTS_mouse_exited_window() -> void:
 	if ghost_mode:
-		emit_signal("column_shift_query", self)
+		_undrag()
