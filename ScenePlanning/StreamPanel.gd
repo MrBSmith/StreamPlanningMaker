@@ -69,7 +69,7 @@ func _process(_delta: float) -> void:
 		# Handles resizing using the bottom grabber
 		elif bottom_grabber_dragged:
 			var v_mouse_dist = clamp(mouse_pos.y - global_pos.y, 0.0, INF)
-			rect_size.y = clamp(stepify(v_mouse_dist, time_slot_size), time_slot_size, container_size.y)
+			rect_size.y = clamp(stepify(v_mouse_dist, time_slot_size), time_slot_size, container_size.y - rect_position.y)
 		
 		# Handles moving the panel verticaly
 		elif move_grabber_dragged:

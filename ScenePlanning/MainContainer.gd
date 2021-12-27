@@ -3,6 +3,8 @@ extends Control
 var stream_panel_scene = preload("res://ScenePlanning/StreamPanel.tscn")
 var add_panel_button_scene = preload("res://ScenePlanning/AddPanelButton/AddPanelButton.tscn")
 
+export var print_logs : bool = false
+
 #### ACCESSORS ####
 
 
@@ -20,15 +22,22 @@ func _ready() -> void:
 #### LOGIC ####
 
 func _panel_change_column(panel: StreamPanel, column: Column) -> void:
+	var origin_column = panel.get_parent()
+	
 	if column == panel.get_parent():
 		panel.ghost_mode = false
 		panel.set_modulate(Color.white)
 		panel.set_position(panel.initial_panel_position)
+	
 	else:
 		var new_panel = panel.duplicate(7)
 		
-		_add_panel(new_panel, column, panel.initial_panel_position)
+		_add_panel(new_panel, column, panel.initial_panel_position, panel.rect_size.y)
 		panel.queue_free()
+		
+		yield(get_tree(), "idle_frame")
+		_update_column_buttons(origin_column)
+		_update_column_buttons(column)
 
 
 func _add_panel(panel: StreamPanel, column: Column, dest_pos := Vector2.ZERO, height : float = 100.0) -> void:
@@ -40,7 +49,7 @@ func _add_panel(panel: StreamPanel, column: Column, dest_pos := Vector2.ZERO, he
 	
 	panel.ghost_mode = false
 	panel.set_modulate(Color.white)
-	panel.set_position(dest_pos) 
+	panel.set_position(dest_pos)
 	panel.set_size(Vector2(column.rect_size.x, height))
 
 
@@ -80,26 +89,46 @@ func _update_column_buttons(column: Column) -> void:
 	for panel in panels_array:
 		var panel_rect = panel.get_rect()
 		
+		# Handles panel changing column (The signal resized is called when added in the tree)
+		if panel_rect.position.x != 0.0:
+			continue
+		
 		for button in button_array:
 			var button_rect = button.get_rect()
 			var intersects = panel_rect.intersects(button_rect)
-			var encloses = panel_rect.encloses(button_rect)
+			var inside = Utils.is_rect_inside_rect(panel_rect, button_rect)
 			var same_rect = panel_rect.is_equal_approx(button_rect)
 			
-			if encloses or same_rect:
+			if inside or same_rect:
+				if print_logs: print("Destroyed a button: the button is contained in the panel")
 				button.queue_free()
 			
 			elif intersects:
 				var button_poly = Utils.rect2poly(button_rect)
 				var panel_poly = Utils.rect2poly(panel_rect)
-				var intersect_poly = Geometry.intersect_polygons_2d(button_poly, panel_poly)[0]
-				var intersect_rect : Rect2 = Utils.poly2rect(intersect_poly)
+				var intersect_poly_array = Geometry.intersect_polygons_2d(button_poly, panel_poly)
 				
-				if intersect_rect.has_no_area():
-					button.queue_free()
+				if intersect_poly_array.empty():
+					continue
+				
+				var intersect_rect : Rect2 = Utils.poly2rect(intersect_poly_array[0])
+				var button_dist = abs(button_rect.position.y - panel_rect.position.y)
+				
+				if intersect_rect.size.y <= 1.0:
+					if button_dist <= 1:
+						if print_logs: print("Destroyed a button: Intersect rect is too small")
+						button.queue_free()
+					else:
+						continue
+				
 				else:
 					button.set_position(intersect_rect.position)
 					button.set_size(intersect_rect.size)
+					
+					if print_logs:
+						print("button_rect: " + String(button_rect))
+						print("panel_rect: " + String(panel_rect))
+						print("intersect_rect: " + String(intersect_rect))
 	
 	var time_slot_height = column.rect_size.y / GLOBAL.nb_time_slot
 	
@@ -114,11 +143,10 @@ func _update_column_buttons(column: Column) -> void:
 func _is_time_slot_empty(time_slot_rect: Rect2, column: Column) -> bool:
 	for child in column.get_children():
 		var child_rect = Rect2(child.get_position(), child.get_size())
-		var intersects = child_rect.intersects(time_slot_rect)
 		var encloses = child_rect.encloses(time_slot_rect)
 		var same_rect = child_rect.is_equal_approx(time_slot_rect)
 		
-		if intersects or encloses or same_rect:
+		if encloses or same_rect:
 			return false
 	return true
 
