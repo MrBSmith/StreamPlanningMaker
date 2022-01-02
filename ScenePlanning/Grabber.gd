@@ -25,6 +25,9 @@ func is_clicked() -> bool: return clicked
 func _ready() -> void:
 	var __ = connect("mouse_entered", self, "_on_mouse_entered")
 	__ = connect("mouse_exited", self, "_on_mouse_exited")
+	
+	set_modulate(Color.transparent)
+
 
 
 #### VIRTUALS ####
@@ -47,7 +50,9 @@ func _gui_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	set_hovered(true)
+	set_modulate(Color.white)
 
 
 func _on_mouse_exited() -> void:
 	set_hovered(false)
+	set_modulate(Color.transparent)

@@ -1,0 +1,155 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ScenePlanning/Grabber.gd" type="Script" id=1]
+[ext_resource path="res://StreamPanel/StreamPanel.gd" type="Script" id=2]
+[ext_resource path="res://BabaGodotLib/UI/LineField/LineField.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="StreamPanel" type="Control" groups=["Panel"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -620.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.25098, 0.654902, 0.760784, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopGrabber" type="ColorRect" parent="."]
+anchor_left = 0.376
+anchor_right = 0.627
+margin_left = -0.280029
+margin_top = 3.0
+margin_right = -0.560059
+margin_bottom = 6.0
+mouse_filter = 1
+mouse_default_cursor_shape = 9
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BottomGrabber" type="ColorRect" parent="."]
+anchor_left = 0.376
+anchor_top = 1.0
+anchor_right = 0.627
+anchor_bottom = 1.0
+margin_left = -0.280029
+margin_top = -6.0
+margin_right = -0.560059
+margin_bottom = -3.0
+mouse_filter = 1
+mouse_default_cursor_shape = 9
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MoveGrabber" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_bottom = -20.0
+mouse_filter = 1
+mouse_default_cursor_shape = 13
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -49.5
+margin_top = 16.0
+margin_right = 49.5
+margin_bottom = 55.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="LineEdit" parent="VBoxContainer"]
+margin_right = 99.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+align = 1
+expand_to_text_length = true
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+placeholder_text = "Title"
+placeholder_alpha = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="LineEdit" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.764706 )
+margin_top = 18.0
+margin_right = 99.0
+margin_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+align = 1
+expand_to_text_length = true
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+placeholder_text = "Subtitle"
+placeholder_alpha = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_bottom = -10.0
+mouse_filter = 2
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="clicked_changed" from="TopGrabber" to="." method="_on_TopGrabber_clicked_changed"]
+[connection signal="clicked_changed" from="BottomGrabber" to="." method="_on_BottomGrabber_clicked_changed"]
+[connection signal="clicked_changed" from="MoveGrabber" to="." method="_on_MoveGrabber_clicked_changed"]

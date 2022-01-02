@@ -45,78 +45,85 @@ __meta__ = {
 }
 
 [node name="Monday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 58.0
+margin_left = 52.0
 margin_top = 7.0
-margin_right = 110.0
+margin_right = 116.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Monday"
+text = "MONDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Thuesday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 223.0
+margin_left = 215.0
 margin_top = 7.0
-margin_right = 289.0
+margin_right = 297.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Thuesday"
+text = "THUESDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Wednesday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 387.0
+margin_left = 378.0
 margin_top = 7.0
-margin_right = 468.0
+margin_right = 477.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Wednesday"
+text = "WEDNESDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Thursday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 567.0
+margin_left = 559.0
 margin_top = 7.0
-margin_right = 633.0
+margin_right = 641.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Thursday"
+text = "THURSDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Friday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 749.0
+margin_left = 744.0
 margin_top = 7.0
-margin_right = 795.0
+margin_right = 800.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Friday"
+text = "FRIDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Saturday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 912.0
+margin_left = 903.0
 margin_top = 7.0
-margin_right = 976.0
+margin_right = 985.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Saturday"
+text = "SATURDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Sunday" type="Label" parent="MainContainer/DaysContainer"]
-margin_left = 1091.0
+margin_left = 1085.0
 margin_top = 7.0
-margin_right = 1141.0
+margin_right = 1147.0
 margin_bottom = 23.0
 size_flags_horizontal = 6
-text = "Sunday"
+text = "SUNDAY"
+uppercase = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -133,7 +140,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Monday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Monday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_right = 165.0
 margin_bottom = 620.0
 size_flags_horizontal = 3
@@ -142,7 +149,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Thuesday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Thuesday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 169.0
 margin_right = 334.0
 margin_bottom = 620.0
@@ -152,7 +159,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Wednesday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Wednesday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 338.0
 margin_right = 503.0
 margin_bottom = 620.0
@@ -162,7 +169,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Thursday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Thursday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 507.0
 margin_right = 672.0
 margin_bottom = 620.0
@@ -172,7 +179,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Friday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Friday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 676.0
 margin_right = 841.0
 margin_bottom = 620.0
@@ -182,7 +189,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Saturday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Saturday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 845.0
 margin_right = 1010.0
 margin_bottom = 620.0
@@ -192,7 +199,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sunday" type="Control" parent="MainContainer/ColumnsManager"]
+[node name="Sunday" type="Container" parent="MainContainer/ColumnsManager"]
 margin_left = 1014.0
 margin_right = 1180.0
 margin_bottom = 620.0
@@ -206,6 +213,7 @@ __meta__ = {
 anchor_bottom = 1.0
 margin_top = 40.0
 margin_right = 30.0
+margin_bottom = -40.0
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -218,43 +226,43 @@ size_flags_vertical = 2
 text = "8:00"
 
 [node name="Label3" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 94.0
+margin_top = 89.0
 margin_right = 40.0
-margin_bottom = 110.0
+margin_bottom = 105.0
 size_flags_vertical = 2
 text = "10:00"
 
 [node name="Label4" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 189.0
+margin_top = 178.0
 margin_right = 40.0
-margin_bottom = 205.0
+margin_bottom = 194.0
 size_flags_vertical = 2
 text = "12:00"
 
 [node name="Label5" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 284.0
+margin_top = 267.0
 margin_right = 40.0
-margin_bottom = 300.0
+margin_bottom = 283.0
 size_flags_vertical = 2
 text = "14:00"
 
 [node name="Label6" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 379.0
+margin_top = 356.0
 margin_right = 40.0
-margin_bottom = 395.0
+margin_bottom = 372.0
 size_flags_vertical = 2
 text = "16:00"
 
 [node name="Label7" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 474.0
+margin_top = 445.0
 margin_right = 40.0
-margin_bottom = 490.0
+margin_bottom = 461.0
 size_flags_vertical = 2
 text = "18:00"
 
 [node name="Label8" type="Label" parent="MainContainer/HourlyCointainer"]
-margin_top = 569.0
+margin_top = 534.0
 margin_right = 40.0
-margin_bottom = 585.0
+margin_bottom = 550.0
 size_flags_vertical = 2
 text = "20:00"

@@ -1,6 +1,6 @@
 extends Control
 
-var stream_panel_scene = preload("res://ScenePlanning/StreamPanel.tscn")
+var stream_panel_scene = preload("res://StreamPanel/StreamPanel.tscn")
 var add_panel_button_scene = preload("res://ScenePlanning/AddPanelButton/AddPanelButton.tscn")
 
 export var print_logs : bool = false

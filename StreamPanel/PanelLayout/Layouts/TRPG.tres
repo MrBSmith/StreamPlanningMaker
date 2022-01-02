@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://StreamPanel/PanelLayout/PlanningTRPGpanel1.png" type="Texture" id=1]
+[ext_resource path="res://StreamPanel/PanelLayout/PanelLayout.gd" type="Script" id=2]
+[ext_resource path="res://StreamPanel/PanelLayout/UI_Border.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 2 )
+keywords = PoolStringArray( "TRPG", "GameDev" )
+background_color = Color( 0.14902, 0.219608, 0.278431, 1 )
+background_image = ExtResource( 1 )
+border_image = ExtResource( 3 )
+border_color = Color( 0.270588, 0.611765, 0.156863, 1 )

@@ -1,6 +1,5 @@
-extends Control
+extends Container
 class_name Column
-
 
 #### ACCESSORS ####
 
@@ -10,7 +9,8 @@ func get_class() -> String: return "Column"
 
 #### BUILT-IN ####
 
-
+func _ready() -> void:
+	var __ = connect("resized", self, "_on_resized")
 
 
 #### VIRTUALS ####
@@ -19,6 +19,8 @@ func get_class() -> String: return "Column"
 
 #### LOGIC ####
 
+func sort_children() -> void:
+	pass
 
 
 #### INPUTS ####
@@ -28,3 +30,5 @@ func get_class() -> String: return "Column"
 #### SIGNAL RESPONSES ####
 
 
+func _on_resized() -> void:
+	sort_children()

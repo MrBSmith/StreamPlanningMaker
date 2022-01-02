@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://StreamPanel/PanelLayout/PanelLayout.gd" type="Script" id=1]
+[ext_resource path="res://StreamPanel/PanelLayout/UI_Border.png" type="Texture" id=2]
+[ext_resource path="res://StreamPanel/PanelLayout/MrColdIcon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+keywords = PoolStringArray( "Game Dev", "Xion Leak" )
+background_color = Color( 0.360784, 0.27451, 0.372549, 1 )
+background_image = ExtResource( 3 )
+border_image = ExtResource( 2 )
+border_color = Color( 0.670588, 0.388235, 0.831373, 1 )
